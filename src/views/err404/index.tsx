@@ -1,0 +1,19 @@
+import { Button, Result } from 'antd';
+import { useNavigate } from 'react-router-dom';
+
+const Err404 = () => {
+    const navigate = useNavigate();
+    // console.log(' process.env: ', import.meta.env.VITE_PUBLIC_URL);
+    return (
+        <div className='w-full h-full flex items-center justify-center'>
+            <Result
+                status='404'
+                title='404'
+                subTitle='抱歉，您访问的页面不存在。'
+                extra={<Button onClick={() => navigate('/index')}>返回首页</Button>}
+            />
+        </div>
+    );
+};
+
+export default Err404;
