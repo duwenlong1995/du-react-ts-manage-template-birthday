@@ -1,0 +1,22 @@
+.progress-circle {
+  position: relative;
+  z-index: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.progress-circle-graph {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+.progress-circle-trail {
+  stroke-linecap: round;
+  transform: rotate(-90deg);
+  transform-origin: center center;
+  transition: stroke-dasharray 3s ease,stroke .3s;
+}
+
+     

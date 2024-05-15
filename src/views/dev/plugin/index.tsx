@@ -1,14 +1,23 @@
 // 复制到剪切板的插件
+import { useNavigate } from 'react-router-dom';
 import CopyToClipboard from './components/CopyToClipboard';
-import { Divider } from 'antd';
+import { Button, Divider } from 'antd';
 import Tabs from './components/Tabs';
 import TabPanel from './components/TabPanel';
 const DevPlugin = () => {
+    const navigate = useNavigate();
     return (
         <div className='w-full h-full'>
             <p className='text-[30px]'>全局插件总览</p>
             <Divider plain></Divider>
             <div>
+                <Button
+                    onClick={() => {
+                        navigate('/BigScream');
+                    }}
+                >
+                    去往大屏页
+                </Button>
                 <div className='text-[24px]'>复制到剪切板</div>
                 <div className='mt-[24px]'>
                     <CopyToClipboard />
