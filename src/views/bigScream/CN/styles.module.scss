@@ -1,0 +1,36 @@
+.CN_Container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    .CN_Top {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        height: 100%;
+        height: 60%;
+        position: relative;
+        .CN_LeftContainer {
+            width: 30%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(0.625rem);
+        }
+        .CN_RightContainer {
+            width: 30%;
+            background-color: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(0.625rem);
+            height: 100%;
+        }
+    }
+    .CN_Bottom {
+        height: 40%;
+        position: relative;
+        .CN_FooterContainer {
+            width: 100%;
+            height: 100%;
+            backdrop-filter: blur(0.625rem);
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+    }
+}

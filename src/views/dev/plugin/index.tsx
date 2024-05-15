@@ -2,8 +2,8 @@
 import { useNavigate } from 'react-router-dom';
 import CopyToClipboard from './components/CopyToClipboard';
 import { Button, Divider } from 'antd';
-import Tabs from './components/Tabs';
-import TabPanel from './components/TabPanel';
+import Tabs from '@/resources/components/Tabs';
+import TabPanel from '@/resources/components/TabPanel';
 const DevPlugin = () => {
     const navigate = useNavigate();
     return (
@@ -21,7 +21,7 @@ const DevPlugin = () => {
                 <div className='text-[24px]'>复制到剪切板</div>
                 <div className='mt-[24px]'>
                     <CopyToClipboard />
-                    <Tabs defaultTabKey='tab1'>
+                    <Tabs location='middle' defaultTabKey='tab1'>
                         <TabPanel tabKey='tab1' label='基础页'>
                             基础页
                         </TabPanel>

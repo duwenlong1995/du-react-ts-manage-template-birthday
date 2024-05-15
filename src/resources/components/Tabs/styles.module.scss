@@ -1,0 +1,31 @@
+.TabsContainer {
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid rgba(5, 5, 5, 0.06);
+    cursor: pointer;
+    user-select: none;
+    .TabItemActive {
+        padding: 12px 12px;
+        color: #1677ff;
+        border-bottom: 2px solid #1677ff;
+    }
+    .TabItemUnActive {
+        padding: 12px 12px;
+    }
+}
+.TabsContainerMiddle {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    border-bottom: 1px solid rgba(5, 5, 5, 0.06);
+    cursor: pointer;
+    user-select: none;
+    .TabItemActive {
+        padding: 12px 12px;
+        color: #1677ff;
+        border-bottom: 2px solid #1677ff;
+    }
+    .TabItemUnActive {
+        padding: 12px 12px;
+    }
+}

@@ -1,6 +1,8 @@
 // import { memo } from 'react';
-import { Modal, Button, Select, Input, Form, Checkbox, Cascader, DatePicker, Radio, Switch } from 'antd';
-import { ReactElement } from 'react';
+import { Modal } from 'antd';
+import { ReactElement, useContext } from 'react';
+import context from '../../utils/context';
+
 interface FormDialogProps {
     title?: string;
     open?: boolean;
@@ -13,9 +15,11 @@ interface FormDialogProps {
         disabled?: boolean;
     };
     children?: ReactElement;
+    width?: number;
 }
 
 const FormDialog = (props: FormDialogProps) => {
+    let obj = useContext(context);
     const modalChildren = props.children;
     return (
         <>

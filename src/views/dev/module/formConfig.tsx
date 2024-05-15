@@ -15,6 +15,7 @@ interface FormFieldConfig {
     typeButton?: string | undefined;
     content?: string;
     options?: Option[];
+    span?: number;
 }
 interface ValidationRule {
     required?: boolean;
@@ -39,7 +40,8 @@ export const formConfig: FormFieldConfig[] = [
         defaultValue: ['Apple'],
         onChange: (val) => {
             console.log(val.target.value);
-        }
+        },
+        span: 24
     },
     {
         type: 'select',
@@ -54,7 +56,7 @@ export const formConfig: FormFieldConfig[] = [
         defaultKey: ['label', 'id'],
         defaultValue: ['0'],
         onChange: (val) => {
-            console.log(val);
+            // console.log(val);
         }
     },
     {
@@ -137,12 +139,12 @@ export const formConfig: FormFieldConfig[] = [
         label: 'Switch',
         name: 'Switch'
         // disabled: true
-    },
-
-    {
-        type: 'button',
-        typeButton: 'primary',
-        htmlButtonType: 'submit',
-        content: '提交'
     }
+
+    // {
+    //     type: 'button',
+    //     typeButton: 'primary',
+    //     htmlButtonType: 'submit',
+    //     content: '提交'
+    // }
 ];

@@ -1,4 +1,4 @@
-import { Button, Select } from 'antd';
+import { Button, Select, Row } from 'antd';
 import CircleProgress from './components/CircleProgress';
 import useSort from './hooks/useSort';
 // import useOption from './hooks/useOption';
@@ -8,18 +8,6 @@ import { useState } from 'react';
 import FormDialog from './components/FormDialog';
 import FormModule from './components/FormModule';
 import { formConfig } from './formConfig';
-// interface FormFieldConfig {
-//     type: string;
-//     inputType?: string;
-//     label: string;
-//     name: string;
-//     rules?: ValidationRule[];
-//     count?: number;
-// }
-// interface ValidationRule {
-//     required?: boolean;
-//     message?: string;
-// }
 
 function DevInfo() {
     const myInstance = new UtilsClass();
@@ -43,6 +31,7 @@ function DevInfo() {
         { label: 'li', id: 2 },
         { label: 'laowang', id: 3 }
     ];
+    const defaultValue = { label: 'xiaodu', id: 0 };
     /**
      * 1.dataOption需要排序的option二维数组
      * 2.'lily'是过滤出数组里的key
@@ -85,7 +74,6 @@ function DevInfo() {
     };
 
     const handleOk = (e: React.MouseEvent<HTMLElement>) => {
-        console.log(e);
         setVisible(false);
     };
 
@@ -95,27 +83,31 @@ function DevInfo() {
     };
     // 表单方法
     const onFinish = (val: any) => {
+        // console.log(val);
+    };
+    const getFormData = (val: any) => {
         console.log(val);
     };
+    // const getFormData2=(val: any) =>{
+
+    // }
     // 使用示例
     const formItemLayout = {
         labelCol: {
             xs: { span: 0 },
             sm: { span: 8 }
-        },
-        wrapperCol: {
-            xs: { span: 0 },
-            sm: { span: 24 }
         }
     };
     return (
         <div className='w-[80%] text-[18px]'>
-            <context.Provider value={{ name: '1' }}>
-                <CircleProgress percent={40} color='#4CAF50' trackColor='#EEEEEE' size='120px' thickness={8} dur={0.01}>
+            <context.Provider value={{ name: 1 }}>
+                <CircleProgress percent={40} color='#4CAF50' trackColor='#EEEEEE' size='120px' thickness={8} dur={0.1}>
                     <h1>80分</h1>
                 </CircleProgress>
                 <Button onClick={showFormDialog}>表单弹窗</Button>
-                <Select onChange={onChange}>{Con(am)}</Select>
+                <Select onChange={onChange} value={defaultValue}>
+                    {Con(am)}
+                </Select>
                 <FormDialog
                     title='表单弹窗'
                     open={visible}
@@ -123,8 +115,22 @@ function DevInfo() {
                     onCancel={handleCancel}
                     okButtonProps={{ disabled: false }}
                     cancelButtonProps={{ disabled: false }}
+                    width={1000}
                 >
-                    <FormModule {...formItemLayout} onFinish={onFinish} formData={formConfig}></FormModule>
+                    <Row>
+                        <FormModule
+                            {...formItemLayout}
+                            onFinish={onFinish}
+                            formData={formConfig}
+                            getForm={getFormData}
+                        ></FormModule>
+                        <FormModule
+                            {...formItemLayout}
+                            onFinish={onFinish}
+                            formData={formConfig}
+                            getForm={getFormData}
+                        ></FormModule>
+                    </Row>
                 </FormDialog>
             </context.Provider>
         </div>

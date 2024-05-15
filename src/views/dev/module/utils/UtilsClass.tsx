@@ -68,30 +68,49 @@ export default class UtilsClass {
         };
         return Con;
     }
-}
-//     /**
-//      * react跨级组件间传值
-//      * @param context context对象，保证多次调用拿到同一个对象
-//      * @param type 每次调用时的组件类型（父组件｜｜子组件）
-//      * @param initValue 祖先组件要传的值，必须是数组类型
-//      * @param component 祖先组件返回来的ReactElement
-//      * @returns
-//      */
 
-//     public useSendParams(
-//         context: React.Context<null>,
-//         type?: { type: string },
-//         initValue?: any[],
-//         component?: ReactElement
-//     ) {
-//         switch (type && type.type) {
-//             case 'father':
-//                 return <context.Provider value={initValue}>{component}</context.Provider>;
-//                 break;
-//             case 'son':
-//                 let obj = useContext(context);
-//                 return obj;
-//                 break;
-//         }
-//     }
-// }
+    /**
+     *根据不同的主题切换不同的组件背景颜色
+     * @param data 数据
+     * @param light 浅色主题的组件颜色
+     * @param deep 深色主题的组件颜色
+     * @param theme 主题值
+     * @returns
+     */
+    public useSlice(
+        data: [{ color?: string; groupKey?: string; groupName?: string; name?: string; unit?: string; value?: number }],
+        light: [{ color?: string }],
+        deep: [{ color?: string }],
+        theme: string
+    ) {
+        if (theme === 'default') {
+            if (light.length > 1 && data.length > 1) {
+                data.map((item, index) => {
+                    Object.assign(item, light?.[index % light.length]);
+                });
+            }
+        } else if (theme === 'dark') {
+            if (deep.length > 1 && data.length > 1) {
+                data.map((item, index) => {
+                    Object.assign(item, deep?.[index % deep.length]);
+                });
+            }
+        }
+
+        return data;
+    }
+    /*
+     *
+     * 根据屏幕分辨率宽度转换像素
+     * @param size
+     * @param defaultWidth
+     * @returns
+     */
+
+    public fitChartSize(size: any, defaultWidth = 1920) {
+        let clientWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+        if (!clientWidth) return size;
+        let scale = clientWidth / defaultWidth;
+        return Number((size * scale).toFixed(3));
+    }
+}

@@ -9,8 +9,7 @@ const getRingPercent = (percent: number, r: number) => {
     const perimeter = Math.PI * 2 * r;
     return (percent / 100) * perimeter + ' ' + perimeter;
 };
-
-export interface ProgressCircleProps {
+interface ProgressCircleProps {
     className?: string;
     style?: CSSProperties;
     children?: ReactNode;
@@ -29,8 +28,6 @@ export interface ProgressCircleProps {
 
 export const CircleProgress: FC<ProgressCircleProps> = (props) => {
     let obj = useContext(context);
-
-    console.log(obj);
 
     const {
         dur,

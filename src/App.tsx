@@ -16,7 +16,10 @@ const App = () => {
 
         fetchRoutes();
     }, []);
+    // 设置根元素字体大小为10px，这是1rem的默认大小
+    const rootElement = document.getElementById('root');
 
+    rootElement.style.fontSize = '12px';
     // 当路由未准备好时显示加载指示器
     if (!router) {
         return <BasePageLoadingIndicator />;
