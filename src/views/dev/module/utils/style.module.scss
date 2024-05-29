@@ -1,0 +1,17 @@
+.options_CustomizeMenu {
+    display: flex;
+    flex-direction: row;
+    .options_label_left {
+        margin-top: 4px;
+    }
+    .options_label_right {
+        display: flex;
+        flex-direction: column;
+        margin-left: 4px;
+        .options_label_title {
+        }
+        .options_describe {
+            color: #c0c0c0;
+        }
+    }
+}

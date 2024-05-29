@@ -1,0 +1,84 @@
+.SelectPro_container {
+    position: relative;
+    display: inline-block;
+    min-height: 30px;
+    background-color: #fff;
+    background-clip: padding-box;
+    cursor: pointer;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    .SelectPro_selector {
+        border: 1px solid #ccc;
+        border-radius: 2px;
+        &:hover {
+            border: 2px solid #3399cc;
+            box-shadow: 0 0 0 0.09rem rgba(131, 202, 235, 0.25);
+            transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+            transition: box-shadow 0.15s ease-in-out;
+        }
+        // &:active {
+        //   box-shadow: 0 0 0 0.09rem rgba(131, 202, 235, 0.25);
+        //   transition: box-shadow 0.15s ease-in-out;
+        // }
+
+        .SelectPro_selector_input input {
+            width: 100%;
+            font-size: 16px;
+            text-align: center;
+            background-color: transparent;
+            border: none;
+
+            caret-color: transparent; /* 隐藏光标 */
+            &:focus {
+                outline: none; /* 去除聚焦时的默认轮廓 */
+            }
+        }
+        .SelectPro_selector_label {
+        }
+    }
+    .SelectPro_selector_borderNone {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: end;
+        border: none;
+        border-radius: 2px;
+        .SelectPro_selector_input input {
+            width: 100%;
+            font-size: 14px;
+            text-align: center;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            caret-color: transparent; /* 隐藏光标 */
+            &:focus {
+                outline: none; /* 去除聚焦时的默认轮廓 */
+            }
+        }
+        .SelectPro_selector_label {
+        }
+    }
+    .SelectPro_menu {
+        position: absolute;
+        z-index: 1000;
+        width: 100%;
+        height: auto;
+        margin-top: 5px;
+        padding: 3px 3px;
+        background-color: #fff;
+        border-radius: 4px;
+        box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.15);
+        animation-name: dropdown-animation;
+        animation-duration: 0.3s;
+        animation-fill-mode: forwards;
+    }
+    @keyframes dropdown-animation {
+        from {
+            transform: translateY(-10px);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+}
