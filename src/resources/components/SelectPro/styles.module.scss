@@ -2,11 +2,14 @@
     position: relative;
     display: inline-block;
     min-height: 30px;
-    background-color: #fff;
     background-clip: padding-box;
     cursor: pointer;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     .SelectPro_selector {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: end;
         border: 1px solid #ccc;
         border-radius: 2px;
         &:hover {
@@ -20,19 +23,22 @@
         //   transition: box-shadow 0.15s ease-in-out;
         // }
 
-        .SelectPro_selector_input input {
-            width: 100%;
-            font-size: 16px;
-            text-align: center;
-            background-color: transparent;
-            border: none;
-
-            caret-color: transparent; /* 隐藏光标 */
-            &:focus {
-                outline: none; /* 去除聚焦时的默认轮廓 */
+        .SelectPro_selector_input {
+            input {
+                width: 100%;
+                font-size: 16px;
+                text-align: center;
+                background-color: transparent;
+                border: none;
+                caret-color: transparent; /* 隐藏光标 */
+                &:focus {
+                    outline: none; /* 去除聚焦时的默认轮廓 */
+                }
             }
         }
-        .SelectPro_selector_label {
+        .SelectPro_selector_icon {
+            margin-left: 5px;
+            margin-right: 5px;
         }
     }
     .SelectPro_selector_borderNone {
@@ -54,7 +60,7 @@
                 outline: none; /* 去除聚焦时的默认轮廓 */
             }
         }
-        .SelectPro_selector_label {
+        .SelectPro_selector_icon {
         }
     }
     .SelectPro_menu {

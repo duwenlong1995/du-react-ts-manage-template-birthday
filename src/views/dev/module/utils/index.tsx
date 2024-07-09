@@ -8,19 +8,21 @@ import styles from './style.module.scss';
  * @param describe {String}
  * @returns
  */
-export const CustomizeMenu = (renderValue: {
+interface CustomizeMenuProps {
     label: string;
     icon?: string;
-    style?: object;
+    style?: { color?: string };
     describe?: string;
     id: number;
-}) => {
-    const { label, icon, style, describe } = renderValue;
-
+    checked?: boolean;
+}
+export const CustomizeMenu = (value: CustomizeMenuProps, defaultValue?: any) => {
+    const { label, icon, style, describe, checked } = value;
+    const renderValue = defaultValue.label === label ? true : false;
     return (
         <>
             <div className={styles.options_CustomizeMenu}>
-                <div className={styles.options_label_left} style={style}>
+                <div className={styles.options_label_left}>
                     <Icon iconName={icon} color={style?.color} />
                 </div>
                 <div className={styles.options_label_right}>
@@ -28,6 +30,12 @@ export const CustomizeMenu = (renderValue: {
                         {label}
                     </div>
                     <div className={styles.options_describe}>{describe}</div>
+                </div>
+                <div
+                    className={styles.options_label_icon}
+                    style={{ display: checked || renderValue ? 'block' : 'none' }}
+                >
+                    <Icon iconName={'choose'} color={'blue'} />
                 </div>
             </div>
         </>

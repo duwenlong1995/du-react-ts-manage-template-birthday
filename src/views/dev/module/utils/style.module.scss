@@ -6,12 +6,18 @@
     }
     .options_label_right {
         display: flex;
+        flex: 1;
         flex-direction: column;
         margin-left: 4px;
         .options_label_title {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
         }
         .options_describe {
             color: #c0c0c0;
         }
+    }
+    .options_label_icon {
     }
 }

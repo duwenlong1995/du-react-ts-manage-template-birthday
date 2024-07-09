@@ -7,16 +7,17 @@
 }
 
 .progress-circle-graph {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
+  // position: absolute;
+  // top: 0;
+  // left: 0;
+  // z-index: -1;
 }
 .progress-circle-trail {
   stroke-linecap: round;
   transform: rotate(-90deg);
   transform-origin: center center;
-  transition: stroke-dasharray 3s ease,stroke .3s;
+  transition: stroke-dasharray 3s ease, stroke 0.3s;
 }
-
-     
+.progress_circle_description {
+  text-align: center;
+}
