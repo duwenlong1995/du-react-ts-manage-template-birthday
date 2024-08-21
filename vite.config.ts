@@ -23,6 +23,15 @@ export default defineConfig({
       injectFile: path.resolve(process.cwd(), 'src/main.jsx'),
     }),
   ],
+  build: {
+    rollupOptions: {
+      output: {
+        // 设置静态资源的根目录
+        // 注意：这里的publicPath是指在生产环境中静态资源的基本路径
+        publicPath: '/',
+      },
+    },
+  },
   define: {
     'process.env': process.env,
   },

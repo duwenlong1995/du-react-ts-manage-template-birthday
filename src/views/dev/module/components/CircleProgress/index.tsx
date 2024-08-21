@@ -4,6 +4,7 @@ import './style.scss'
 import UtilsClass from '../../utils/UtilsClass'
 import context from '../../utils/context'
 import { computedColor } from './utils'
+import { animation } from '@/utils/tools/animation'
 
 // strokeDasharray 的第一个值（填充部分长度）表示进度环的“实线”部分，应该有多长，而第二个值（圆周长）表示整个进度环的周长。
 const getRingPercent = (percent: number, r: number) => {
@@ -52,6 +53,7 @@ export const CircleProgress: FC<ProgressCircleProps> = (props) => {
   const [finalDashArray, setFinalDashArray] = useState('')
   const [trailStyle, setTrailStyle] = useState({})
   const [trackStyle, setTrackStyle] = useState({})
+  const [animatedPercent, setAnimatedPercent] = useState(0)
 
   const radius = 50 - thickness / 2
   const perimeter = Math.PI * 2 * radius
@@ -79,6 +81,11 @@ export const CircleProgress: FC<ProgressCircleProps> = (props) => {
       r: radius,
     })
   }
+  useEffect(() => {
+    setFinalDashArray(getRingPercent(percent, radius))
+    animation(dur * 20000, 0, percent, (val) => setAnimatedPercent(val))
+  }, [percent, radius, dur])
+
   useEffect(() => {
     initAnimation()
   }, [percent])
@@ -112,7 +119,7 @@ export const CircleProgress: FC<ProgressCircleProps> = (props) => {
           </circle>
         </svg>
         <div style={renderPercentStyle}>
-          {percent}
+          {Math.round(animatedPercent)}
           {unit}
         </div>
       </div>

@@ -1,5 +1,4 @@
 import CN from './CN'
-import MiddleContent from './MiddleContent'
 import HeaderContent from './HeaderContent'
 import styles from './styles.module.scss'
 import useWindowDimensions from '@/hooks/useWindowDimensions'
@@ -17,11 +16,8 @@ const BigScream = () => {
   return (
     <>
       <div style={{ width: width, height: height }} className={styles.main}>
-        <div className={styles.pages}>
-          <HeaderContent />
-          {renderPage()}
-        </div>
-        <MiddleContent />
+        <HeaderContent />
+        {renderPage()}
       </div>
     </>
   )
