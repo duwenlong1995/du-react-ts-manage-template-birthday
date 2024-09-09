@@ -1,0 +1,16 @@
+dialog {
+  display: none;
+  position: absolute;
+  width: fit-content;
+  height: fit-content;
+  background-color: canvas;
+  border-style: solid;
+  border-color: initial;
+  border-image: initial;
+  padding: 1em;
+  transition: all 0.2s;
+  border-radius: 1em;
+}
+dialog[open] {
+  display: block;
+}
