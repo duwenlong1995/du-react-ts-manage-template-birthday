@@ -4,6 +4,7 @@ import { HighlightOutlined } from '@ant-design/icons'
 import Layout from '@/layout' // 布局组件
 import BasePageTitle from '@/resources/components/base-page-title' // 页面标题组件
 import Demo2 from '@/views/Demo2' // 示例页面2
+import Demo3 from '@/views/Demo3' // 示例页面2
 // 懒加载路由组件
 const Error404 = lazy(() => import('@/views/err404'))
 const routes = [
@@ -34,6 +35,13 @@ const routes = [
           title: 'demo2',
         },
         element: <Demo2 />,
+      },
+      {
+        path: '/demo/demo3',
+        meta: {
+          title: 'demo3',
+        },
+        element: <Demo3 />,
       },
     ],
   },

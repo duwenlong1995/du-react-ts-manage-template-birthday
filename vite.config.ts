@@ -42,9 +42,9 @@ export default defineConfig({
     },
   },
   server: {
-    // host: '0.0.0.0', //使用当前的IP地址，没有这个就是以localhost作为本地地址
-    // port: 3000, //端口号为3000
-    // open: false, //是否在默认浏览器中自动打开该地址
+    host: '0.0.0.0', //使用当前的IP地址，没有这个就是以localhost作为本地地址
+    port: 3000, //端口号为3000
+    open: false, //是否在默认浏览器中自动打开该地址
     proxy: {
       //使用代理
       // '/api': {

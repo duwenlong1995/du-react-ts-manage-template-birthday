@@ -6,6 +6,8 @@ import { Button, Divider } from 'antd'
 import Tabs from '@/resources/components/Tabs'
 import TabPanel from '@/resources/components/TabPanel'
 import Dialog from '@/resources/components/Dialog'
+import ThreePractice from './threePractice'
+
 const DevPlugin = () => {
   const navigate = useNavigate()
   const [open, setOpen] = useState(false)
@@ -47,7 +49,8 @@ const DevPlugin = () => {
               基础页
             </TabPanel>
             <TabPanel tabKey="tab2" label="增强页">
-              增强页
+              {/* 增强页 */}
+              <ThreePractice></ThreePractice>
             </TabPanel>
             <TabPanel tabKey="tab3" label="扩展页">
               扩展页

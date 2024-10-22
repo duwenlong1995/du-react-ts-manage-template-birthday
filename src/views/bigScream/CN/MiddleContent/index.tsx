@@ -36,11 +36,11 @@ export default memo(function MiddleContent({ children, className }: definedProps
   // const cubeMaterial = new THREE.MeshBasicMaterial({ color: 0x00ff44 });
   // instance.createMesh(cubeGeometry, cubeMaterial);
 
-  const sphereGeometry = new THREE.SphereGeometry(1, 320, 302)
-  const sphereMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff })
-  instance.createMesh(sphereGeometry, sphereMaterial)
+  // const sphereGeometry = new THREE.SphereGeometry(1, 320, 302)
+  // const sphereMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff })
+  // instance.createMesh(sphereGeometry, sphereMaterial)
   // 物体坐标轴
-  instance.initAxesHelper(5)
+  instance.initAxesHelper(500)
   //  地表格
   instance.initGridHelper(50, 50, 0xffffff, 0xffffff)
   // 生成机器人和星星（模型）
@@ -51,7 +51,7 @@ export default memo(function MiddleContent({ children, className }: definedProps
   const starts = generateStarts(200)
 
   // 将物体添加到场景
-  // instance.scene.add(robot, robot2, starts);
+  instance.scene.add(robot, robot2, starts)
 
   // 创建并设置方向光
   const straightLight = new THREE.DirectionalLight(0xffffff, 5)

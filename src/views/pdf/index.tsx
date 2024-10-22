@@ -5,7 +5,7 @@ import PdfContainer from './components/PdfContainer'
 import { handleData } from '@/views/pdf/utils'
 import './index.scss'
 import { Table } from 'antd'
-import { CommonList } from '@/config/api/data'
+import { CommonList } from '@/config/api/filesUp'
 
 const PdfOneComponent = () => {
   const { Template, PageNodeConfig, Decision, LayOut, MockData, styles } = obj

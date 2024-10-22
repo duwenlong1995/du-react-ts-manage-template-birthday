@@ -70,7 +70,7 @@ const enableErrorMessage = true
 axios.interceptors.request.use(
   function (config: any) {
     config.headers = {
-      ContentType: '', // 设置请求头中的 Content-Type
+      ContentType: 'multipart/form-data', // 设置请求头中的 Content-Type
       Authorization: '', // 设置认证头部信息
       // 还可以添加其他自定义的请求头
     }
@@ -144,7 +144,8 @@ axios.interceptors.response.use(
 export const $post = (url: any, params: any, config = {}) => {
   return new Promise((resolve, reject) => {
     axios
-      .post(url, QS.stringify(params), config)
+      // .post(url, QS.stringify(params), config)
+      .post(url, params, config)
       .then((res) => {
         resolve(res.data)
       })
