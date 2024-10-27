@@ -93,11 +93,19 @@ export class ThreeTool {
     // 创建一个新的 HTML 元素并将 HTML 内容赋值给它
     const labelDiv = document.createElement('div')
     labelDiv.innerHTML = DOM.dom
+    // 调整字体大小
+    labelDiv.style.fontSize = '0.2rem' // 根据需要设置
+
+    // 设置最大宽高
+    labelDiv.style.maxWidth = '30px' // 最大宽度
+    labelDiv.style.maxHeight = '10px' // 最大高度
+    labelDiv.style.overflow = 'hidden' // 超出内容隐藏
+    labelDiv.style.textOverflow = 'ellipsis' // 超出部分用省略号表示
+
     // 创建CSS3DObject并设置其位置
     const boxObject = new CSS3DObject(labelDiv)
     boxObject.position.set(DOM.position.x, DOM.position.y, DOM.position.z)
     this.scene.add(boxObject)
-    console.log('  this.scene::: ', this.scene)
   }
   // 初始化场景的方法
   public initScene(type?: string): THREE.Scene {
@@ -192,7 +200,7 @@ export class ThreeTool {
     this.outlinePass.edgeStrength = 30 // 边缘的强度，值越高边框范围越大
     this.outlinePass.edgeThickness = 15 // 边框宽度
     this.outlinePass.downSampleRatio = 1 // 边框弯曲度
-    this.outlinePass.pulsePeriod = 5 // 呼吸闪烁的速度
+    this.outlinePass.pulsePeriod = 3 // 呼吸闪烁的速度
     this.outlinePass.visibleEdgeColor.set(0x00ff00) // 呼吸显示的颜色
     this.outlinePass.hiddenEdgeColor.set(0x000000) // 呼吸消失的颜色
     this.outlinePass.clear = true // 清除之前的渲染

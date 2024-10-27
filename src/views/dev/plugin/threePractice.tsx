@@ -79,10 +79,11 @@ const ThreePractice = () => {
         dom: `
         <style>
         .dialog-container {
-            width: 200px;
+            width: 100%; /* 修改为更小的宽度 */
+            height: 100%;
             background-color: #f0f0f0;
-            padding: 10px;
-            border-radius: 8px;
+            padding: 5px; /* 减小内边距 */
+            border-radius: 2px;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
         }
         .box-container {
@@ -91,21 +92,22 @@ const ThreePractice = () => {
         }
         .tip-green {
             background-color: #e0f7e0;
-            padding: 10px;
+            padding: 2px; /* 减小内边距 */
             border-radius: 5px;
         }
         .line-green {
             height: 2px;
             background-color: #66bb6a;
-            margin-top: 8px;
+            margin-top: 5px; /* 减小间距 */
         }
         .label-value-green {
             color: #4caf50;
             font-weight: bold;
+            font-size: 14px; /* 调整字体大小 */
         }
         .title {
-            font-size: 16px;
-            margin-bottom: 8px;
+            font-size: 4px; /* 调整字体大小 */
+            margin-bottom: 2px; /* 减小底部间距 */
             font-weight: bold;
         }
     </style>
@@ -132,7 +134,7 @@ const ThreePractice = () => {
           </div>
       </div>
     <div class=line-green></div>`,
-        position: { x: 10, y: 5, z: 3 },
+        position: { x: 0, y: 0, z: 0 },
       }
       instance.createDialogHtml(HtmlContent)
     } else {
@@ -191,6 +193,7 @@ const ThreePractice = () => {
     instance.renderer.render(instance.scene, instance.camera)
     statsRef.current && statsRef.current.update() // 更新统计信息
     instance.composer.render() // 使用 composer 渲染后期效果
+    instance.labelRenderer.render(instance.scene, instance.camera) // 添加这一行
   }
   // 监听组件挂载和卸载
   useEffect(() => {
