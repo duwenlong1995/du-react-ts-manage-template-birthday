@@ -22,6 +22,6 @@
       "@/*": ["src/*"]
     }
   },
-  "include": ["src", "tailwind.config.js"],
+  "include": ["src", "tailwind.config.js", "src/views/dev/plugin/threePractice.tsx"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

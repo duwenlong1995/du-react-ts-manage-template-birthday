@@ -46,11 +46,11 @@ const DevPlugin = () => {
           <CopyToClipboard />
           <Tabs location="middle" defaultTabKey="tab1">
             <TabPanel tabKey="tab1" label="基础页">
-              基础页
+              {/* 基础页 */}
+              <ThreePractice></ThreePractice>
             </TabPanel>
             <TabPanel tabKey="tab2" label="增强页">
-              {/* 增强页 */}
-              <ThreePractice></ThreePractice>
+              增强页
             </TabPanel>
             <TabPanel tabKey="tab3" label="扩展页">
               扩展页
