@@ -1,7 +1,8 @@
 import { useRef, useEffect, useState } from 'react'
 import * as THREE from 'three'
 import { ThreeTool } from '../../../../sdk/ThreeTool'
-import { Spin } from 'antd'
+import { configModel } from './configModel'
+import { HtmlContent } from './HtmlContent'
 
 const ThreePractice = () => {
   const myDialogRef = useRef<HTMLDivElement>(null)
@@ -48,6 +49,7 @@ const ThreePractice = () => {
       (child: any) => child.type === 'Group' || child.type === 'Mesh',
     )
     const intersects = instance.rayCaster.intersectObjects(selectableObjects, true)
+    console.log('selectableObjects::: ', selectableObjects)
 
     if (intersects.length > 0) {
       let selectedObject = intersects[0].object
@@ -73,119 +75,17 @@ const ThreePractice = () => {
       }
 
       instance.selectedMesh = selectedObjects
+      console.log('selectedObjects::: ', selectedObjects)
       instance.outlinePass.selectedObjects = selectedObjects // 更新 OutlinePass 的选中对象
 
-      const HtmlContent = {
-        dom: `
-        <style>
-        .dialog-container {
-            width: 100%; /* 修改为更小的宽度 */
-            height: 100%;
-            background-color: #f0f0f0;
-            padding: 5px; /* 减小内边距 */
-            border-radius: 2px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        .box-container {
-            color: #333;
-            font-family: Arial, sans-serif;
-        }
-        .tip-green {
-            background-color: #e0f7e0;
-            padding: 2px; /* 减小内边距 */
-            border-radius: 5px;
-        }
-        .line-green {
-            height: 2px;
-            background-color: #66bb6a;
-            margin-top: 5px; /* 减小间距 */
-        }
-        .label-value-green {
-            color: #4caf50;
-            font-weight: bold;
-            font-size: 14px; /* 调整字体大小 */
-        }
-        .title {
-            font-size: 4px; /* 调整字体大小 */
-            margin-bottom: 2px; /* 减小底部间距 */
-            font-weight: bold;
-        }
-    </style>
-    <div class="box-container">
-    <div class='tip-green' >
-          <div class="title">设备名称 :测试</div>
-          <div class="label-text">
-              温度 :
-              <span class="mr5" class='label-value-green'>
-        50
-              </span>
-              <span class='label-value-green'>
-                  正常
-              </span>
-          </div>
-          <div class="label-text">
-              漏水 :
-              <span class="mr5" class='label-value-green'>
-      40
-      </span>
-              <span class='label-value-green'>
-                  正常
-              </span>
-          </div>
-      </div>
-    <div class=line-green></div>`,
-        position: { x: 0, y: 0, z: 0 },
-      }
       instance.createDialogHtml(HtmlContent)
     } else {
       console.log('未点击到物体')
     }
   }
-  const urls = [
-    // {
-    //   key: 'part1',
-    //   path: '/3dModel/glb/',
-    //   name: 'city.glb',
-    //   zip: '/draco/',
-    //   position: { x: 0, y: 0, z: 0 },
-    //   rotation: { x: 0, y: 0, z: 0 },
-    // },
-    // {
-    //   key: 'part2',
-    //   path: '/3dModel/glb/',
-    //   name: 'earth.glb',
-    //   zip: '/draco/',
-    //   position: { x: 0, y: 0, z: 0 },
-    //   rotation: { x: 0, y: 0, z: 0 },
-    //   scale: { x: 0, y: 0, z: 0 },
-    // },
-    {
-      key: 'part1',
-      path: '/3dModel/glb/',
-      name: 'gymTrainer.glb',
-      zip: '/draco/',
-      position: { x: 0, y: 0, z: 0 },
-      rotation: { x: 0, y: 0, z: 0 },
-      scale: { x: 0.08, y: 0.08, z: 0.08 },
-    },
-    // {
-    //   key: 'part3',
-    //   path: '/3dModel/glb/',
-    //   name: 'sketch.glb',
-    //   position: { x: 0, y: 0, z: 0 },
-    //   rotation: { x: 0, y: 0, z: 0 },
-    //   scale: { x: 4, y: 4, z: 4 },
-    // },
-    // {
-    //   key: 'part4',
-    //   path: '/3dModel/gltf/plane/',
-    //   name: 'scene.gltf',
-    //   position: { x: 0, y: 0, z: 0 },
-    //   rotation: { x: 0, y: 0, z: 0 },
-    // },
-  ]
+
   // const rotation = { x: Math.PI / 2, y: 0, z: 0 }
-  instance.initGltfLoader(urls, onProgress)
+  instance.initGltfLoader(configModel, onProgress)
 
   const animate = () => {
     requestAnimationFrame(animate)
@@ -194,6 +94,7 @@ const ThreePractice = () => {
     statsRef.current && statsRef.current.update() // 更新统计信息
     instance.composer.render() // 使用 composer 渲染后期效果
     instance.labelRenderer.render(instance.scene, instance.camera) // 添加这一行
+    instance.needsUpdate = false // 更新后重置
   }
   // 监听组件挂载和卸载
   useEffect(() => {
@@ -212,6 +113,7 @@ const ThreePractice = () => {
     }
     // 清除事件监听器
     return () => {
+      instance.cleanup()
       if (containerRef.current) {
         containerRef.current.removeEventListener('click', handleClick)
       }

@@ -1,0 +1,58 @@
+.loading_container {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(5px);
+  background-blend-mode: multiply;
+}
+
+.jinDu-con {
+  width: 300px;
+  height: 10px;
+  border-radius: 50px;
+  background-color: white;
+  margin-top: 10px;
+  overflow: hidden;
+}
+
+#jinDu {
+  height: inherit;
+  background: linear-gradient(90deg, #007bff, #00d4ff);
+  width: 0;
+  border-radius: 50px;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2), 0 0 10px rgba(0, 123, 255, 0.5);
+  animation: fillBar 2s forwards, pulse 2s infinite;
+}
+
+@keyframes fillBar {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2), 0 0 10px rgba(0, 123, 255, 0.5);
+  }
+  50% {
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 123, 255, 1);
+  }
+}
+
+#jinDu-text-con {
+  width: 300px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  top: calc(50% - 5px);
+  text-align: center;
+  border-radius: 6px;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 10px;
+}

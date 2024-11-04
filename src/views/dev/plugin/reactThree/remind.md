@@ -1,0 +1,1 @@
+npm install three@latest @react-three/fiber@latest @react-three/drei@latest

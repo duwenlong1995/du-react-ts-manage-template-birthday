@@ -224,12 +224,12 @@ export class ThreeTool {
    * 加载Glb模型
    */
   public initGltfLoader(
-    urls: glbTypeProps[],
+    configModel: glbTypeProps[],
     onProgress?: (process: number) => void,
     onerror?: (error: string) => void,
   ) {
     //2、使用加载器导入模型文件，这里注意，需要用在scene创建后
-    urls.map((item) => {
+    configModel.map((item) => {
       const { name, path, position, rotation, zip, scale } = item
       const loader = new GLTFLoader().setPath(path)
       const _this = this
@@ -392,5 +392,43 @@ export class ThreeTool {
     const textMaterial = new THREE.MeshPhongMaterial({ color: 0xffffff, flatShading: true }) // front
     const mesh = new THREE.Mesh(textGeometry, textMaterial)
     return mesh
+  }
+  public cleanup() {
+    // Dispose of all models and their associated resources
+    this.scene.traverse((child: any) => {
+      if (child instanceof THREE.Mesh) {
+        // Clean up textures
+        if (child.material.map) {
+          child.material.map.dispose()
+        }
+        if (child.material.lightMap) {
+          child.material.lightMap.dispose()
+        }
+        if (child.material.emissiveMap) {
+          child.material.emissiveMap.dispose()
+        }
+
+        // Dispose of geometry
+        if (child.geometry) {
+          child.geometry.dispose()
+        }
+
+        // Dispose of materials
+        if (child.material) {
+          child.material.dispose()
+        }
+      }
+    })
+
+    // Dispose of the composer and its passes
+    this.composer.dispose()
+
+    // Dispose of the renderer
+    if (this.renderer) {
+      this.renderer.dispose()
+    }
+
+    // Optionally, you can also remove event listeners if you added any
+    window.removeEventListener('resize', this.onWindowResize.bind(this), true)
   }
 }

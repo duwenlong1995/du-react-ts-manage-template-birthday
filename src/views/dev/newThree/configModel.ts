@@ -1,0 +1,43 @@
+export const configModel = [
+  // {
+  //   key: 'part1',
+  //   path: '/3dModel/glb/',
+  //   name: 'city.glb',
+  //   zip: '/draco/',
+  //   position: { x: 0, y: 0, z: 0 },
+  //   rotation: { x: 0, y: 0, z: 0 },
+  // },
+  // {
+  //   key: 'part2',
+  //   path: '/3dModel/glb/',
+  //   name: 'earth.glb',
+  //   zip: '/draco/',
+  //   position: { x: 0, y: 0, z: 0 },
+  //   rotation: { x: 0, y: 0, z: 0 },
+  //   scale: { x: 0, y: 0, z: 0 },
+  // },
+  {
+    key: 'part1',
+    path: '/3dModel/glb/',
+    name: 'city.glb',
+    zip: '/draco/',
+    position: { x: 0, y: 0, z: 0 },
+    rotation: { x: 0, y: 0, z: 0 },
+    scale: { x: 0.08, y: 0.08, z: 0.08 },
+  },
+  // {
+  //   key: 'part3',
+  //   path: '/3dModel/glb/',
+  //   name: 'sketch.glb',
+  //   position: { x: 0, y: 0, z: 0 },
+  //   rotation: { x: 0, y: 0, z: 0 },
+  //   scale: { x: 4, y: 4, z: 4 },
+  // },
+  // {
+  //   key: 'part4',
+  //   path: '/3dModel/gltf/plane/',
+  //   name: 'scene.gltf',
+  //   position: { x: 0, y: 0, z: 0 },
+  //   rotation: { x: 0, y: 0, z: 0 },
+  // },
+]

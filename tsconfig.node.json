@@ -2,7 +2,9 @@
   "compilerOptions": {
     "composite": true,
     "module": "esnext",
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "skipLibCheck": true, // 允许跳过库检查
+    "forceConsistentCasingInFileNames": true
   },
   "include": ["vite.config.ts"]
 }

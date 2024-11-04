@@ -7,6 +7,7 @@ import Tabs from '@/resources/components/Tabs'
 import TabPanel from '@/resources/components/TabPanel'
 import Dialog from '@/resources/components/Dialog'
 import ThreePractice from './threePractice'
+import ReactThree from './reactThree'
 
 const DevPlugin = () => {
   const navigate = useNavigate()
@@ -51,6 +52,7 @@ const DevPlugin = () => {
             </TabPanel>
             <TabPanel tabKey="tab2" label="增强页">
               增强页
+              {/* <ReactThree></ReactThree> */}
             </TabPanel>
             <TabPanel tabKey="tab3" label="扩展页">
               扩展页
